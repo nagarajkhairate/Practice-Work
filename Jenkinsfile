@@ -3,17 +3,20 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                sh('git checkout')
+                sh 'git checkout'
             }
         }
         stage('git branches') {
             steps {
-                sh('git branch -a')
+                sh 'git branch -a'
+                echo 'git branch -a'
             }
         }
-        stage('build') {
+        stage('deploy') {
             steps {
-                sh('echo "build successful"')
+                echo 'build successfully'
+                echo 'have a good day'
+                echo 'this is nagaraj here'
             }
         }
     }
@@ -23,4 +26,3 @@ pipeline {
         }
     }
 }
-
