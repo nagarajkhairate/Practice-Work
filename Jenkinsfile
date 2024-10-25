@@ -9,14 +9,13 @@ pipeline {
         stage('git branches') {
             steps {
                 sh 'git branch -a'
-                echo 'git branch -a'
             }
         }
         stage('deploy') {
             steps {
-                echo 'build successfully'
-                echo 'have a good day'
-                echo 'this is nagaraj here'
+                sh 'echo "Build successfully"'
+                sh 'echo "Have a good day"'
+                sh 'echo "This is Nagaraj here"'
             }
         }
     }
