@@ -1,30 +1,38 @@
 pipeline {
     agent any
+    environrment {
+        NODE_ENV='production'
+    }
     stages {
-        stage ('git checkout url') {
+        stage ('install dependencies') {
             steps {
-                sh 'echo "git checkout user login"'
+                sh 'npm install'
             }
         }
-        stage ('print the filr sql passwd.txt') {
+        stage('build') {
             steps {
-                sh 'echo "cat sql passwd.txt"'
+                sh 'npm run build'
             }
         }
-        stage ('build') {
+        stage ('test') {
             steps {
-                sh 'echo"build succesfull"'
+                sh 'npm test'
             }
         }
-        stage ('deployement') {
+        stage ('deploy') {
             steps {
-                sh 'echo "successfully deployed have a good day nagaraj"'
+                sh 'npm run deploy'
+            }
+        }
+        stage ('success') {
+            steps {
+                sh 'echo "deploy success"'
             }
         }
     }
     post {
         always {
-            cleanws()
+            cleanWs ()
         }
     }
 }
